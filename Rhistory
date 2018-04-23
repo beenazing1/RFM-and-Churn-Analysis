@@ -1,0 +1,512 @@
+data[,10]
+is.na(data)
+typeof(data)
+typeof(data.frame(data))
+file_path <- "http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data"
+data <- read.table(file_path)
+data <- read.table(file_path)
+data
+data <- read.table(file_path, header = F, sep = ",", na.strings = "?")
+data
+data[,10]
+data_missing_del<-na.omit(data)
+data_missing_del
+dim(data)
+data[10,]
+data_miss_del<-na.omit(data)
+dim(data_miss_del)
+ncol(data)
+data_miss_del<-data(na.rm=T)
+for (i in ncol(data)){
+for (j in nrow(data)){
+if (is.null(data[i,j]))
+data['V12']=1 else data['V12']=0
+}
+}
+data
+data[1,]
+is.null(data[1,1])
+data['v12'][1]
+data['v12'
+data['v12']
+data['v12']
+data['V12']
+data['V12'][1]
+data['V12'][1]
+data['V12',1]
+data['V12',10]
+data[12,10]
+data[12,15]
+data[12,16]
+data[,12]
+for (i in ncol(data)){
+for (j in nrow(data)){
+data[j,12] <- if (is.null(data[i,j])) 1 else 0
+}
+}
+for (i in ncol(data)){
+for (j in nrow(data)){
+data[j,12] <- if (is.null(data[i,j])) 1 else 0
+}
+}
+data
+for (i in ncol(data)){
+for (j in nrow(data)){
+data[j,12] <- if (is.null(data[i,j])) 0 else 1
+}
+}
+data
+data <- read.table(file_path, header = F, sep = ",", na.strings = "?")
+data_binary<-data
+a <- if (is.null(data[1,1])) 0 else 1
+a
+a <- if (is.null(data[1,1])) 1 else 0
+a
+row.has.na <- apply(data, 1, function(x){any(is.na(x))})
+row.has.na
+sum(row.has.na)
+dim(data_miss_del)
+data_miss_del<-na.omit(data)
+dim(data_miss_del)
+dim(data)
+dim(data_miss_del)
+sum(row.has.na)
+row.has.na <- apply(data, 1, function(x){any(is.na(x))})
+data
+data[,1]
+data[,1]
+data[1,]
+row.has.na
+as.integer(row.has.na)
+data_binary['V12']=as.integer(row.has.na)
+data_binary['V12']=as.integer(row.has.na)
+data_binary[1,]
+data_binary[10,]
+data_binary[1:10,]
+# Function to create the SVM model. Returns the model
+svm_model <- function(train_data, responses, C, kernel="vanilladot", kpar="automatic", scaled=T, type="C-svc"){
+#' @param responses <- Column in the data that contains the results/responses
+#' @param train_data <- The dataset (training)
+#' @param C <- The lambda, the cost function (it is non negative)
+#' @param kernel <- The kernel function used in training and predicting. Set as "vanilladot" by default, that's the linear kernel. Possible values are - "rbfdot", "vanilladot", "polydot", "tanhdot" etc.
+#' @param kpar <- Defines the parameters for the kernel method. Set as "automatic" by default
+#' @param scaled <- Whether to scale data. Set as True, by default
+#' @param type <- Whether to use for classification, novelty detection or regression. Set to "C-svc" by default, for classification
+#' Check out ?ksvm for more help
+model <- ksvm(x=as.matrix(train_data), y=responses, C=C, kernel=kernel, kpar=kpar, scaled=scaled, type=type)
+return(model)
+}
+# Returns the truth table for the given model and data
+svm_table <- function(model, train_data, responses){
+#' @param model <- svm model returned by the function svm_model
+#' @param train_data <- testing dataset
+#' @param responses <- Column in the data that contains the results/responses
+p <- predict(model)
+return(table(p, responses))
+}
+# Returns the efficiency for the model and the data
+svm_eff <- function(model, train_data, responses){
+#' @param model <- svm model returned by the function svm_model
+#' @param train_data <- testing dataset
+#' @param responses <- Column in the data that contains the results/responses
+p <- predict(model)
+eff <- sum(p == responses)/nrow(data)
+return(eff)
+}
+# Loop over c in a range (range 10^-5 to 100)to see how efficiency varies between two values of C, given the step size of increment
+plotLambdaEfficiency <- function(train_data, responses){
+#' @param train_data <- testing dataset
+#' @param responses <- Column in the data that contains the results/responses
+i <- 0
+lambda <- c()
+efficiency <- c()
+for(c in c(1:10 %o% 10^(-5:1))){
+i <- i+1
+lambda[i] <- c
+model <- svm_model(train_data, responses, c)
+eff <- svm_eff(model, credit_data, responses)
+efficiency[i] <- eff
+}
+plot(lambda, efficiency)
+}
+data = read.csv(file.choose(),header=TRUE)
+data
+data = na.omit(data)
+data
+data = read.csv(file.choose(),header=TRUE)
+data = read.csv(file.choose(),header=TRUE)
+data = read.csv(file.choose(),header=TRUE)
+data = na.omit(data)
+data
+names = colnames(data)
+attach(data)
+sAvgDistS = scale(log(SpecDist))
+sAvgDistP = scale(log(PedDist))
+sMedianIncome = scale(MedianIncome)
+sNumHospitals = scale(No.Hospitals)
+sPercentLessHS = scale(PercentLessHS)
+sPercentHS = scale(PercentHS)
+attach(data)
+library(car)
+df1<-data.frame(logit(ED.visits/Asthma_children),No.Hospitals, sPercentLessHS, sPercentHS, sMedianIncome,sAvgDistS,sAvgDistP)
+dfnew<-as.data.frame(cor(df1))
+View(dfnew)
+radiant:::radiant()
+cov
+cov(45,32)
+4*0.06
+4*0.47
+pnorm(2,0.24,1.88)
+2*0.06+0.6
+2*0.47
+3*(0.2^2)
+0.2*0.2
+0.2*0.2*3
+ln1.2
+log(1.2)
+ln(1.2)
+pnorm(0.1823,0.3,0.12)
+log2
+log(2)
+dnorm(0.9)
+pnorm(2,0.24,sqrt(1.88))
+sqrt(1.88)
+pnorm(2,0.24,1.37
+)
+pnorm(0.1823,0.3,sqrt(0.12))
+result <- function(a,b,c){
+if(delta(a,b,c) > 0){ # first case D>0
+x_1 = (-b+sqrt(delta(a,b,c)))/(2*a)
+x_2 = (-b-sqrt(delta(a,b,c)))/(2*a)
+result = c(x_1,x_2)
+}
+else if(delta(a,b,c) == 0){ # second case D=0
+x = -b/(2*a)
+}
+else {"There are no real roots."} # third case D<0
+}
+delta<-function(a,b,c){
+b^2-4*a*c
+}
+.1^2
+0.2*1.2816
+(0.2*1.2816)^2
+((0.2*1.2816)^2)+(2*0.6931*0.1)
+0.6931^2
+result(0.01,0.2043,0.4804)
+result <- function(a,b,c){
+if(delta(a,b,c) > 0){ # first case D>0
+x_1 = (-b+sqrt(delta(a,b,c)))/(2*a)
+x_2 = (-b-sqrt(delta(a,b,c)))/(2*a)
+result = c(x_1,x_2)
+}
+else if(delta(a,b,c) == 0){ # second case D=0
+x = -b/(2*a)
+}
+else {"There are no real roots."} # third case D<0
+}
+delta<-function(a,b,c){
+b^2-4*a*c
+}
+result(1,2,3)
+result(0.01,-0.2043,0.4804)
+result(100,-2043,4804)
+0.2043^2-(4*0.4804*0.01)
+sqrt(0.2043^2-(4*0.4804*0.01))
+(0.2043+0.15)/0.02
+(0.2043-0.15)/0.02
+rm(list=ls())				# clearing
+data(SP500,package="Ecdat")
+SPreturn = SP500$r500
+library(evir)  # for emplot
+data(Garch,package="Ecdat")
+attach(Garch)
+data(Capm,package="Ecdat")
+diffrf=diff(Capm$rf)
+diffdm = diff(dm)  #  Deutsch mark
+plot(dm)
+diffbp = diff(bp)  #  British pound
+diffcd = diff(cd)  #  Canadian dollar
+diffdy = diff(dy)  #  Japanese yen
+n = length(SPreturn)
+n2 = length(diffdm)
+n3 = length(diffrf)
+Reldiffrf = diffrf/(Capm$rf[2:(n3+1)])
+year_SP = 1981 + (1:n)* (1991.25-1981)/n
+year_dm = 1980 + (1:n2)* (1987.5-1980)/n2
+year_rf = 1960 + (1:n3) * (2003 - 1960)/n3
+par(mfrow=c(1,2))
+data(SP500,package="Ecdat")
+SPreturn = SP500$r500
+plot(density(SPreturn,kernel="gaussian"),xlim=c(-.06,.06),
+main="(a) standard estimates",lwd=2,cex.lab=1.5,cex.axis=1.5,
+ylim=c(0,63),cex.main=1.5,lty=1)
+z = seq(from=-.06,to=.06,by=.001)
+lines(z,dnorm(z,mean=median(SPreturn),sd=sd(SPreturn)),
+lty=2,lwd=3,cex.lab=1.5,cex.axis=1.5,col="red")
+legend(-.065,63,c("estimated density","normal density"),lty=c(1,2),cex=1.5,
+box.lty=0,lwd=2,col=c("black","red"))
+plot(density(SPreturn,kernel="gaussian"),xlim=c(-.06,.06),
+main="(b) robust estimates",lwd=2,cex.lab=1.5,cex.axis=1.5,cex.main=1.5,
+ylim=c(0,63),lty=1)
+lines(z,dnorm(z,mean=median(SPreturn),sd=mad(SPreturn)),lty=2,lwd=3,col="red")
+legend(-.065,63,c("estimated density","normal density"),lty=c(1,2),cex=1.5,
+box.lty=0,lwd=2,col=c("black","red"))
+set.seed("991155")
+edf_norm= ecdf(rnorm(150))
+pdf("normal_plots_normal.pdf")  ##  Fig 4.10
+par(mfrow=(c(3,2)))
+set.seed("543")
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+pdf("normal_plots_normal.pdf")  ##  Fig 4.10
+par(mfrow=(c(3,2)))
+set.seed("543")
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+################################################
+#####  Code for figure 4.10 ####################
+################################################
+pdf("normal_plots_normal.pdf")  ##  Fig 4.10
+par(mfrow=(c(3,2)))
+################################################
+#####  Code for figure 4.9 #####################
+################################################
+pdf("convex_concave.pdf",width=6,height=5)  ## Figure 4.9
+pdf("convex_concave.pdf",width=6,height=5)  ## Figure 4.9
+x = (1:299)/300
+f1  = exp(3*x)
+f2 = log(x+.01)
+f3 = qnorm(x)
+f4 = pnorm(6*x -3)
+par(mfrow=c(2,2))
+plot(x,f1,type="l",main="Convex", xlab="sample quantile", ylab="normal quantile")
+plot(x,f2,type="l",main="Concave", xlab="sample quantile", ylab="normal quantile")
+plot(x,f4,type="l",main="Convex-concave", xlab="sample quantile", ylab="normal quantile")
+plot(x,f3,type="l",main="Concave-convex", xlab="sample quantile", ylab="normal quantile")
+pdf("normal_plots_normal.pdf")  ##  Fig 4.10
+par(mfrow=(c(3,2)))
+set.seed("543")
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(20)
+qqnorm(x1,datax=T,main="n = 20")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(150)
+qqnorm(x1,datax=T,main="n = 150")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+x1=rnorm(1000)
+qqnorm(x1,datax=T,main="n = 1000")
+qqline(x1,datax=T)
+rpart(23)
+install.packages(rpart)
+help rpart
+help tree
+install.packages("rpart")
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+View(import_fs)
+radiant:::radiant()
+rm(list=ls())				# clearing
+###########  R script for Homework 3 - ISYE 6783 (FDA) ###########################
+library(Ecdat)
+data("CRSPday")
+dimnames(CRSPday[[2]])
+dimnames(CRSPday)[[2]]
+# Plot IBM returns
+r = CRSPday[,5]
+plot(r)
+# Convert class of variable 'r' from 'time series' to 'numeric'
+r2 <- as.numeric
+clas(r2)
+plot(r2)
+colnames(r2)
+# Covariance matrix, correlation matrix and means of GE, Mobil and IBM
+cov(CRSPday[,4:6])
+apply(CRSPday[,4:6],2,mean)
+# Covariance matrix, correlation matrix and means of GE, Mobil and IBM
+cov(CRSPday[,4:6])
+cor(CRSPday[,4:6])
+apply(CRSPday[,4:6],2,mean)
+'''
+a) mean of Mobil returns is 0.000779
+b) variance of GE returns is 1.882164e-04
+c) covariance between GE and Mobil returns is 5.270394e-05
+d) correlation between GE and Mobil returns is 0.2972499
+#### Exercise 13 #####
+# Load Siemens data
+library(evir)
+library(evir)
+)
+rm(list=ls())				# clearing
+###########  R script for Homework 3 - ISYE 6783 (FDA) ###########################
+#### Exercise 1 #####
+# Load CRSPday Data
+library(Ecdat)
+data("CRSPday")
+dimnames(CRSPday)[[2]]
+# Plot IBM returns
+r <- CRSPday[,5]
+plot(r)
+mode(r) # Mode of IBM returns
+class(r) # Class of IBM returns
+# Convert class of variable 'r' from 'time series' to 'numeric'
+r2 <- as.numeric
+clas(r2)
+plot(r2)
+# Covariance matrix, correlation matrix and means of GE, Mobil and IBM
+cov(CRSPday[,4:6])
+cor(CRSPday[,4:6])
+apply(CRSPday[,4:6],2,mean)
+'''
+a) mean of Mobil returns is 0.000779
+b) variance of GE returns is 1.882164e-04
+c) covariance between GE and Mobil returns is 5.270394e-05
+d) correlation between GE and Mobil returns is 0.2972499
+'''
+#### Exercise 13 #####
+# Load Siemens data
+library(evir)
+data("siemens")
+par(mfrow = c(3,2))
+library(evir)
+data("siemens")
+n <- length(siemens)
+par(mfrow = c(3,2))
+qqplot(siemens,qt(((1:n)-0.5)/n,2),
+ylab = "t(2) quantiles",
+xlab = "data quantiles")
+qqplot(siemens,qt(((1:n)-0.5)/n,3),
+ylab = "t(3) quantiles",
+xlab = "data quantiles")
+qqplot(siemens,qt(((1:n)-0.5)/n,4),
+ylab = "t(4) quantiles",
+xlab = "data quantiles")
+qqplot(siemens,qt(((1:n)-0.5)/n,5),
+ylab = "t(5) quantiles",
+xlab = "data quantiles")
+qqplot(siemens,qt(((1:n)-0.5)/n,8),
+ylab = "t(8) quantiles",
+xlab = "data quantiles")
+qqplot(siemens,qt(((1:n)-0.5)/n,12),
+ylab = "t(12) quantiles",
+xlab = "data quantiles")
+fitdistr(siemens, 't')
+fitdistr(siemens, 't')
+fitdistr(siemens, "t")
+fitdistr(x, t)
+install.packages(fitdistrplus)
+library(MASS)
+library(fGarch)
+fit.T = fitdistr(siemens, "t")
+fit.T
+fit.T <- fitdistr(siemens, "t")
+fit.T
+colnames(siemens)
+siemens
+dim(siemens)
+evir
+siemens
+siemens[10,]
+siemens[10]
+siemens[:10]
+siemens
+fit.T
+# Covariance matrix, correlation matrix and means of GE, Mobil and IBM
+cov(CRSPday[,4:6])
+cor(CRSPday[,4:6])
+apply(CRSPday[,4:6],2,mean)
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+c((1.0,.9,a),(.9,1.0,.9))
+cbind(c(1.0,0.9,a),c(0.9,1.0,0.9),c(a,0.9,1.0))
+eigen(x)
+x=c(1.0,0.9,0,0.9,1.0,0.9,0,0.9,1.0)
+matrix=(x,nrow=3,ncol=3)
+matrix=(data=x,nrow=3,ncol=3)
+matrix(data=x,nrow=3,ncol=3)
+m=matrix(data=x,nrow=3,ncol=3)
+eigen(m)
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+## Check assumptions
+plot(model$residuals)
+radiant:::radiant()
+getwd()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+radiant:::radiant()
+getwd()
+setwd('C://Users//Nitish Kholgade//Desktop//MGT 6203 - Data Analytics in Business//Project//dunnhumby - The Complete Journey CSV')
+data_sample <- read.csv('hh_demographics.csv')
+data_sample <- read.csv('hh_demographic.csv')
+data_sample
+data_sample[1,]
+data_sample <- read.csv('product.csv')
+data_samples[1,]
+data_sample[1,]
+data_sample <- read.csv('casual_data')
+data_sample <- read.csv('causal_data')
+data_sample <- read.csv('causal_data.csv')
